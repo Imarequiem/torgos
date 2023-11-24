@@ -718,7 +718,7 @@ hr {
 }
 .span-about-section {
   display: block;
-  margin-top: 30px;
+  margin-top: 20px;
   font-family: Poppins;
   font-size: 56px;
   font-weight: 800;
@@ -1140,7 +1140,8 @@ hr {
     line-height: 22px;
   }
   .span-about-section {
-    font-size: 36px;
+    margin-top: 15px;
+    font-size: 33px;
     line-height: 22px;
     letter-spacing: 0.6126983761787415px;
   }
@@ -1226,6 +1227,7 @@ hr {
   }
   .yandex-map {
     margin-top: 0px;
+    height: 250px;
   }
 }
 @media (max-width: 480px) {
@@ -1309,6 +1311,9 @@ hr {
     line-height: 20px;
     letter-spacing: 0.4595238268375397px;
   }
+  #attention-svg {
+    width: 12px;
+  }
 }
 @media (max-width: 479px) {
   .five-reasons-buttons {
@@ -1379,6 +1384,25 @@ hr {
   }
 }
 @media (max-width: 320px) {
+  .buttons-sections {
+    margin: 0 0 30px 0;
+    flex-direction: column;
+  }
+  .btn-section {
+    border-left: 0;
+    padding-left: 0;
+    margin-left: 0;
+    margin-top: 10px;
+    width: fit-content;
+  }
+  .btn-section:focus {
+    font-family: Poppins;
+    font-size: 12px;
+    font-weight: 800;
+    line-height: 22px;
+    letter-spacing: -7.303934523861244e-8px;
+    text-align: left;
+  }
   .p-carousel {
     line-height: 18px;
   }
@@ -1402,6 +1426,12 @@ hr {
   .href-map,
   .href-map > a {
     font-size: 12px;
+  }
+  #attention-svg {
+    position: relative;
+    top: 1px;
+    width: 13px;
+    height: 10px;
   }
 }
 </style>

@@ -34,8 +34,47 @@ export default {
   margin-left: 10%;
   margin-right: 10%;
 }
+.div-header {
+  position: relative;
+}
+.torgos-logo {
+  display: block;
+  position: relative;
+  bottom: 15px;
+  margin: 0;
+  font-family: Poppins;
+  font-size: 32px;
+  font-weight: 700;
+  line-height: 50px;
+  letter-spacing: 0;
+  text-align: left;
+  color: #f3f3f3;
+}
+.a-torgos-logo {
+  position: relative;
+  top: 15px;
+  color: #f3f3f3;
+  text-decoration: none;
+}
+.router-div {
+  position: relative;
+}
 .router {
-  font-family: Poppins-Regular;
+  font-family: Poppins;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 29px;
+  letter-spacing: 0.178571417927742px;
+  text-align: center;
+  position: relative;
+  top: 15px;
+  margin-left: 20px;
+  color: #f3f3f3;
+  text-decoration: none;
+
+  &.router-link-exact-active {
+    color: grey;
+  }
 }
 
 .main-nav {
@@ -43,44 +82,24 @@ export default {
   justify-content: space-between;
   width: 100%;
   margin-top: 30px;
-  .router {
-    position: relative;
-    top: 15px;
-    margin-left: 20px;
-    color: #f3f3f3;
-    text-decoration: none;
-
-    &.router-link-exact-active {
-      color: grey;
-    }
-  }
-  .a-torgos-logo {
-    position: relative;
-    top: 15px;
-    color: #f3f3f3;
-    text-decoration: none;
-  }
   text-align: center;
 }
-
-.div-header {
-  position: relative;
+@media (max-width: 480px) {
+  .torgos-logo {
+    font-size: 26px;
+  }
+  .router {
+    font-family: Poppins;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 29px;
+    letter-spacing: 0.178571417927742px;
+    text-align: center;
+  }
 }
-.router-div {
-  position: relative;
-}
-.torgos-logo {
-  display: block;
-  text-align: left;
-  position: relative;
-  bottom: 15px;
-  margin: 0;
-  font-family: Inter;
-  font-size: 32px;
-  font-weight: 700;
-  line-height: 50px;
-  letter-spacing: -0.8928570747375488px;
-  text-align: left;
-  color: #f3f3f3;
+@media (max-width: 352px) {
+  .torgos-logo {
+    font-size: 20px;
+  }
 }
 </style>

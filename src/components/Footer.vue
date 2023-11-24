@@ -271,7 +271,7 @@ li {
   background: url(../assets/message.svg) center / contain no-repeat;
 }
 .personal-data {
-  margin-left: 25px;
+  margin-left: 10px;
 }
 .submit-button {
   position: relative;
@@ -302,6 +302,14 @@ input::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
+.span-checkbox {
+  display: inline-block;
+  position: relative;
+  width: 15px;
+  height: 15px;
+  top: 25px;
+}
+
 @media (max-width: 1600px), (min-width: 1600px) {
   .submit-button {
     left: 40%;
@@ -434,5 +442,8 @@ input::-webkit-inner-spin-button {
 .custom-control {
   height: 0px;
   width: 0px;
+  display: inline-block;
+  position: relative;
+  float: left;
 }
 </style>
