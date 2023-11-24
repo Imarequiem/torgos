@@ -278,4 +278,12 @@ li {
     padding-left: 0px;
   }
 }
+@media (max-width: 333px) {
+  .policy-header {
+    font-size: 17px;
+  }
+  .router {
+    width: 105px;
+  }
+}
 </style>

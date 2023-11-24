@@ -436,5 +436,8 @@ li {
   .policy-header {
     font-size: 17px;
   }
+  .router {
+    width: 105px;
+  }
 }
 </style>
