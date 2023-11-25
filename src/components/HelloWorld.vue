@@ -154,9 +154,12 @@
         <div class="carousel" v-if="carousel">
           <b-carousel
             id="carousel-1"
-            v-model="slide"
-            :interval="10000"
             controls
+            label-next=""
+            label-prev=""
+            no-hover-pause
+            v-model="slide"
+            :interval="7000"
             img-width="1024"
             img-height="480"
             style="text-shadow: 1px 1px 2px #333"
@@ -180,9 +183,7 @@
               img-src="https://prorus.ru/files/641/42975479c7/%D0%9F%D0%BE%D0%BB%D1%8F%D1%88%D0%BE%D0%B2%D0%B0_%D0%95%D0%BA%D0%B0%D1%82%D0%B5%D1%80%D0%B8%D0%BD%D0%B0_1Y2A4796_result.jpg"
             >
               <div class="div-carousel">
-                <h3 class="h3-carousel">
-                  Помещениях различных организаций, офисах
-                </h3>
+                <h3 class="h3-carousel">Офисы</h3>
                 <p class="p-carousel">
                   Использование рециркуляторов в офисах не только полезно для
                   сотрудников, но и выгодно для бизнеса. Снизится количество
@@ -195,7 +196,7 @@
             >
               <div class="div-carousel">
                 <h3 class="h3-carousel">
-                  Подсобных, технических, складских и др. помещениях.
+                  Складские, технические, и др. помещениях.
                 </h3>
                 <p class="p-carousel">
                   Рециркулятор поможет оббезоразить помещение от различных
@@ -448,6 +449,10 @@ export default {
 </script>
 
 <style scoped lang="scss">
+.carousel-indicators > li {
+  display: flex;
+  justify-content: space-between;
+}
 * {
   color: white;
   overflow: visible;
@@ -718,7 +723,6 @@ hr {
 }
 .span-about-section {
   display: block;
-  margin-top: 20px;
   font-family: Poppins;
   font-size: 56px;
   font-weight: 800;
@@ -1140,7 +1144,6 @@ hr {
     line-height: 22px;
   }
   .span-about-section {
-    margin-top: 15px;
     font-size: 33px;
     line-height: 22px;
     letter-spacing: 0.6126983761787415px;
@@ -1229,6 +1232,16 @@ hr {
     margin-top: 0px;
     height: 250px;
   }
+  .h3-carousel {
+    font-size: 18px;
+    line-height: 21px;
+    letter-spacing: 0.6126983761787415px;
+  }
+  .p-carousel {
+    font-size: 12px;
+    line-height: 20px;
+    letter-spacing: 0.4595238268375397px;
+  }
 }
 @media (max-width: 480px) {
   .advantages-div {
@@ -1302,14 +1315,16 @@ hr {
     font-size: 14px;
   }
   .h3-carousel {
-    font-size: 18px;
-    line-height: 21px;
-    letter-spacing: 0.6126983761787415px;
+    font-size: 13px;
+    line-height: 10px;
+    letter-spacing: 0.6126983762px;
   }
   .p-carousel {
-    font-size: 12px;
-    line-height: 20px;
-    letter-spacing: 0.4595238268375397px;
+    font-size: 10px;
+    line-height: 15px;
+    letter-spacing: 0.4595238268px;
+    margin-right: 20px;
+    padding-top: 0%;
   }
   #attention-svg {
     width: 12px;
@@ -1337,14 +1352,18 @@ hr {
     line-height: 18px;
     letter-spacing: -0.18909329175949097px;
   }
-  .span-icon[data-v-469af010] {
+  .span-icon {
     padding-top: 3px;
   }
   .btn-section {
     font-size: 10px;
+    padding-left: 9px;
   }
   .safety-p {
     font-size: 14px;
+  }
+  .div-carousel {
+    width: 100%;
   }
 }
 @media (max-width: 400px) {
@@ -1356,6 +1375,15 @@ hr {
   }
   .safety-p {
     font-size: 12px;
+  }
+  .h3-carousel {
+    font-size: 10px;
+    margin-bottom: 5px;
+  }
+  .p-carousel {
+    font-size: 8px;
+    line-height: 10px;
+    margin-right: 0;
   }
 }
 @media (max-width: 370px) {
@@ -1377,7 +1405,6 @@ hr {
     line-height: 26px;
   }
   .span-about-section {
-    margin-top: 10px;
     font-size: 23px;
     font-weight: 250;
     line-height: 22px;
@@ -1402,9 +1429,6 @@ hr {
     line-height: 22px;
     letter-spacing: -7.303934523861244e-8px;
     text-align: left;
-  }
-  .p-carousel {
-    line-height: 18px;
   }
   .header-questions-container {
     font-size: 18px;
