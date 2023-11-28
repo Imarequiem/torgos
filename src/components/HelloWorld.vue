@@ -449,10 +449,6 @@ export default {
 </script>
 
 <style scoped lang="scss">
-.carousel-indicators > li {
-  display: flex;
-  justify-content: space-between;
-}
 * {
   color: white;
   overflow: visible;
@@ -706,7 +702,7 @@ hr {
 }
 .fourth-container-bg {
   background: url(../assets/bg-about-product.png) no-repeat;
-  background-size: 100% 100%;
+  background-size: 100% 2000px;
   padding-bottom: 10px;
   padding-left: 10%;
   padding-right: 10%;
@@ -739,7 +735,7 @@ hr {
 }
 .buttons-sections {
   display: flex;
-  margin: 70px 0 70px 0;
+  margin: 70px 0 50px 0;
 }
 
 .buttons-sections > button:first-child {
@@ -1100,6 +1096,9 @@ hr {
   }
 }
 @media (max-width: 768px) {
+  .fourth-container-bg {
+    background-size: 100% 1300px;
+  }
   .advantages {
     font-size: 13px;
     line-height: 22px;
@@ -1205,6 +1204,9 @@ hr {
   width: 100%;
 }
 @media (max-width: 580px) {
+  .fourth-container-bg {
+    background-size: 100% 900px;
+  }
   .promo-header {
     font-size: 36px;
     line-height: 36px;
@@ -1367,6 +1369,9 @@ hr {
   }
 }
 @media (max-width: 400px) {
+  .fourth-container-bg {
+    background-size: 100% 700px;
+  }
   .map {
     height: 290px;
   }

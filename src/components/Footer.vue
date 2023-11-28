@@ -165,6 +165,7 @@ export default {
   letter-spacing: 0.22434264421463013px;
   text-align: left;
   transition: 1s;
+  width: fit-content;
 }
 .info-item:hover {
   box-shadow: 1px 1px #229aa1, 2px 2px #229aa1, 3px 3px #229aa1, 4px 4px #229aa1,
