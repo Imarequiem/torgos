@@ -1,5 +1,6 @@
 <template>
   <div class="main">
+    <Header />
     <div class="policy-card">
       <div class="routers">
         <div class="header-policy">
@@ -157,6 +158,7 @@
 </template>
 
 <script>
+import Header from "../components/Header.vue";
 export default {
   name: "RulesVue",
   data() {
@@ -164,6 +166,9 @@ export default {
       policy: false,
       rules: false,
     };
+  },
+  components: {
+    Header,
   },
   methods: {
     policyActive() {

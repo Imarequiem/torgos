@@ -1,5 +1,6 @@
 <template>
   <div class="main">
+    <Header />
     <div class="hello">
       <div class="first-stars">
         <div class="second-stars">
@@ -399,6 +400,7 @@
 </template>
 
 <script>
+import Header from "@/components/Header";
 export default {
   name: "HelloWorld",
   data() {
@@ -411,6 +413,9 @@ export default {
       safety: true,
       performance: false,
     };
+  },
+  components: {
+    Header,
   },
   methods: {
     onSlideStart(slide) {

@@ -18,7 +18,7 @@
 
 <script>
 export default {
-  name: "MainHeader",
+  name: "HeaderCatalog",
   data: () => {
     return {
       catalog: false,
@@ -54,7 +54,7 @@ export default {
   line-height: 50px;
   letter-spacing: 0;
   text-align: left;
-  color: #f3f3f3;
+  color: #33475b;
 }
 .a-torgos-logo {
   position: relative;
@@ -75,7 +75,7 @@ export default {
   position: relative;
   top: 15px;
   margin-left: 20px;
-  color: #f3f3f3;
+  color: #33475b;
   text-decoration: none;
 
   &.router-link-exact-active {

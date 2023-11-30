@@ -1,82 +1,91 @@
 <template>
-  <div class="catalog">
-    <div class="header-div">
-      <h1 class="header">Каталог</h1>
-      <hr class="header-line" />
-    </div>
-    <div class="catalog-content">
-      <div class="filter">
-        <div class="filter-card">
-          <div class="header-filter">
-            <b-button
-              v-b-toggle.collapse-3
-              class="m-1"
-              id="filter-accordion"
-              @click="(showFilter = !showFilter), filterArrow()"
-            >
-              <img src="../assets/arrow.svg" id="arrow" />
-              <h1 class="filter-header">ЦЕНА</h1>
-            </b-button>
-            <div class="filter-inputs">
-              <input type="number" class="from" placeholder="От" /><input
-                type="number"
-                class="to"
-                placeholder="До"
-              />
+  <div class="main">
+    <HeaderCatalog />
+    <div class="catalog">
+      <div class="header-div">
+        <h1 class="header">Каталог</h1>
+        <hr class="header-line" />
+      </div>
+      <div class="catalog-content">
+        <div class="filter" id="filter">
+          <div class="filter-card">
+            <div class="header-filter">
+              <b-button
+                v-b-toggle.collapse-3
+                class="m-1"
+                id="filter-accordion"
+                @click="(showFilter = !showFilter), filterArrow()"
+              >
+                <img src="../assets/arrow.svg" id="arrow" />
+                <h1 class="filter-header">ЦЕНА</h1>
+              </b-button>
+              <div class="filter-inputs">
+                <input
+                  type="number"
+                  class="from"
+                  placeholder="От"
+                  v-model="from"
+                /><input
+                  type="number"
+                  class="to"
+                  placeholder="До"
+                  v-model="to"
+                />
+              </div>
             </div>
+            <b-collapse visible id="collapse-3">
+              <b-card id="content-text">
+                <h1 class="filter-text-header">ОБОРУДОВАНИЕ</h1>
+                <input
+                  name="cssCheckbox"
+                  id="demo_opt_1"
+                  type="checkbox"
+                  class="css-checkbox"
+                />
+                <label for="demo_opt_1"></label>
+                <p class="label-checkbox-text">Микрон</p>
+              </b-card>
+            </b-collapse>
           </div>
-          <b-collapse visible id="collapse-3">
-            <b-card id="content-text">
-              <h1 class="filter-text-header">ОБОРУДОВАНИЕ</h1>
-              <input
-                name="cssCheckbox"
-                id="demo_opt_1"
-                type="checkbox"
-                class="css-checkbox"
-              />
-              <label for="demo_opt_1"></label>
-              <p class="label-checkbox-text">Микрон</p>
-            </b-card>
+        </div>
+        <div class="micron-accordion" id="micron-accordion">
+          <b-button
+            :class="visible ? null : 'collapsed'"
+            :aria-expanded="visible ? 'true' : 'false'"
+            aria-controls="collapse-4"
+            @click="(visible = !visible), changeArrow()"
+          >
+            Микрон
+            <img src="../assets/arrow-micron.svg" id="arrow-micron" />
+          </b-button>
+          <b-collapse id="collapse-4" v-model="visible" class="mt-2">
+            <b-card
+              >Предназначен для обеззараживания воздуха UV-C излучением.
+              Обеззараживание воздушного потока происходит в процессе его
+              принудительной циркуляции через корпус, внутри которого размещена
+              бактерицидная ультрафиолетовая лампа низкого давления.</b-card
+            >
+            <div class="products-container">
+              <div
+                class="product-card"
+                v-for="product in allProducts"
+                :key="product.id"
+              >
+                <div class="img-products-container">
+                  <img src="../assets/Micron.jpg" class="product-images" />
+                </div>
+                <div class="text-content">
+                  <h3 class="name">{{ product.brand }}</h3>
+                  <p>{{ product.title }}</p>
+                  <p class="description">{{ product.description }}</p>
+                  <p class="price">{{ product.price }} ₽</p>
+                  <p><a href="" class="read-more">Подробнее</a></p>
+                  <button class="order-button">Заказать</button>
+                </div>
+              </div>
+            </div>
           </b-collapse>
         </div>
-      </div>
-      <div class="micron-accordion">
-        <b-button
-          :class="visible ? null : 'collapsed'"
-          :aria-expanded="visible ? 'true' : 'false'"
-          aria-controls="collapse-4"
-          @click="(visible = !visible), changeArrow()"
-        >
-          Микрон
-          <img src="../assets/arrow-micron.svg" id="arrow-micron" />
-        </b-button>
-        <b-collapse id="collapse-4" v-model="visible" class="mt-2">
-          <b-card
-            >Предназначен для обеззараживания воздуха UV-C излучением.
-            Обеззараживание воздушного потока происходит в процессе его
-            принудительной циркуляции через корпус, внутри которого размещена
-            бактерицидная ультрафиолетовая лампа низкого давления.</b-card
-          >
-          <div class="products-container">
-            <div
-              class="product-card"
-              v-for="product in allProducts"
-              :key="product.id"
-            >
-              <div class="img-products-container">
-                <img src="../assets/Micron.jpg" class="product-images" />
-              </div>
-              <div class="text-content">
-                <h3 class="name">{{ product.brand }}</h3>
-                <p>{{ product.title }}</p>
-                <p class="description">{{ product.description }}</p>
-                <p class="price">{{ product.price }} ₽</p>
-                <p><a href="" class="read-more">Подробнее</a></p>
-                <button class="order-button">Заказать</button>
-              </div>
-            </div>
-          </div>
-        </b-collapse>
       </div>
     </div>
   </div>
@@ -84,6 +93,7 @@
 
 <script>
 import { mapGetters, mapActions } from "vuex";
+import HeaderCatalog from "@/components/HeaderCatalog";
 export default {
   name: "CatalogMicron",
   data: () => {
@@ -91,6 +101,8 @@ export default {
       products: [],
       visible: true,
       showFilter: true,
+      from: null,
+      to: null,
       value: [],
       options: [
         { text: "First Check", value: "first" },
@@ -99,6 +111,9 @@ export default {
       ],
       arrow: 0,
     };
+  },
+  components: {
+    HeaderCatalog,
   },
   computed: {
     ...mapGetters(["allProducts"]),
@@ -117,12 +132,26 @@ export default {
       res.style.transform = "rotate(180deg)";
     },
     filterArrow() {
-      const res = window["arrow"];
+      const arr = window["arrow"];
+      const width = window["filter"];
+      if (
+        window.screen.width <= 999 &&
+        this.showFilter == false &&
+        window.screen.width >= 480
+      ) {
+        width.style.width = "fit-content";
+      } else if (
+        window.screen.width <= 999 &&
+        this.showFilter == true &&
+        window.screen.width >= 480
+      ) {
+        width.style.width = "80%";
+      }
       if (this.showFilter === true) {
-        res.style.transform = "rotate(0deg)";
+        arr.style.transform = "rotate(0deg)";
         return;
       }
-      res.style.transform = "rotate(180deg)";
+      arr.style.transform = "rotate(180deg)";
     },
   },
   async mounted() {
@@ -142,7 +171,7 @@ p {
   transition: all 0.3s ease;
 }
 .header-filter {
-  height: 90px;
+  height: 95px;
   background: #ffffff;
   border: none;
   margin: 0 !important;
@@ -277,7 +306,6 @@ p {
 .filter {
   position: absolute;
   width: 266px;
-  height: 315px;
   border-radius: 10px;
 }
 .filter-card {
@@ -354,13 +382,13 @@ p {
   justify-content: center;
   grid-template-columns: repeat(2, auto);
   justify-content: space-between;
-  margin-bottom: 100px;
   margin-top: 30px;
 }
 .product-card {
   width: 275px;
   box-shadow: 0px 4px 7px 0px #0000001a;
   border-radius: 10px;
+  margin-bottom: 50px;
 }
 .product-card > text-content > h1,
 p {
@@ -483,5 +511,123 @@ h3 {
 }
 .micron-accordion {
   width: 680px;
+}
+@media (max-width: 1230px) {
+  .filter {
+    position: absolute;
+    width: 200px;
+    border-radius: 10px;
+  }
+  .micron-accordion {
+    width: 570px;
+  }
+  .from,
+  .to {
+    width: 75px;
+  }
+}
+@media (max-width: 999px) {
+  .catalog-content {
+    flex-wrap: nowrap;
+    flex-direction: row;
+    justify-content: center;
+  }
+  .header-filter {
+    width: 220px;
+    height: 90px;
+  }
+  .from,
+  .to {
+    height: 25px;
+  }
+  .micron-accordion {
+    margin-top: 130px;
+  }
+  .filter-card {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center;
+  }
+  .filter {
+    width: 80%;
+  }
+  .micron-accordion {
+    width: 100%;
+  }
+  .filter-text-header {
+    line-height: 16px;
+    padding-bottom: 0;
+    padding-top: 0;
+    margin-bottom: 12px;
+    margin-top: 3px;
+  }
+  .label-checkbox-text {
+    font-size: 14px;
+    line-height: 16px;
+  }
+  .btn-secondary {
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 42px;
+    letter-spacing: 0.8357051014900208px;
+    height: 40px;
+  }
+  #arrow-micron {
+    top: 17px;
+  }
+  .btn-secondary.collapsed {
+    margin-bottom: 10px;
+  }
+  .product-card {
+    width: 260px;
+  }
+  .products-container {
+    justify-content: space-around;
+  }
+  .description {
+    font-size: 14px;
+    line-height: 24px;
+  }
+  .read-more {
+    line-height: 24px;
+  }
+  .price {
+    font-size: 18px;
+    line-height: 30px;
+  }
+  .order-button {
+    width: 160px;
+    height: 37px;
+    border-radius: 8px;
+    font-size: 16px;
+    line-height: 30px;
+  }
+}
+@media (max-width: 768px) {
+  .name {
+    line-height: 26px;
+  }
+  .read-more {
+    font-size: 14px;
+  }
+}
+@media (max-width: 710px) {
+  .products-container {
+    grid-template-columns: repeat(1, auto);
+    margin-top: 60px;
+  }
+  .product-card {
+    margin-bottom: 50px;
+  }
+}
+@media (max-width: 467px) {
+  .filter-card {
+    display: block;
+    width: 100%;
+  }
+  .header-filter {
+    width: 100%;
+  }
 }
 </style>
